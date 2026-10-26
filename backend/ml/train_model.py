@@ -12,8 +12,7 @@ from sklearn.model_selection import (
 )
 from sklearn.pipeline import Pipeline
 
-from training_data import create_training_data
-
+from ml.training_data import create_training_data
 
 ML_DIR = Path(__file__).resolve().parent
 MODEL_PATH = ML_DIR / "lifestyle_model.joblib"

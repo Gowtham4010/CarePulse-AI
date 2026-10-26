@@ -2,7 +2,7 @@
 from datetime import datetime
 
 from fastapi import APIRouter, Depends, HTTPException
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 from sqlalchemy.orm import Session
 
 from database.database import SessionLocal
@@ -26,6 +26,13 @@ class LifestyleInput(BaseModel):
     stress_score: int = Field(ge=1, le=10)
     mood_score: int = Field(ge=1, le=10)
     screen_time: float = Field(ge=0, le=24)
+    @model_validator(mode="after")
+    def validate_daily_time(self):
+        if self.sleep_hours + self.screen_time > 24:
+            raise ValueError(
+                "Sleep hours and screen time cannot total more than 24 hours."
+            )
+        return self
 
 
 def get_db():
