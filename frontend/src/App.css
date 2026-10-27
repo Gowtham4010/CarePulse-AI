@@ -223,3 +223,49 @@
     animation: none;
   }
 }
+/* Mental Wellbeing rating guide */
+
+.rating-guide {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.rating-guide-description {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.rating-guide details {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.rating-guide summary {
+  color: #2563eb;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.rating-guide-levels {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.rating-guide-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.rating-guide-item strong {
+  min-width: 40px;
+  color: #334155;
+}
+
+.rating-guide-item span {
+  color: #64748b;
+}

@@ -1660,3 +1660,515 @@ select {
     padding: 18px;
   }
 }
+/* Mental Wellbeing Rating Guides */
+.rating-guide {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.rating-guide-description {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.rating-guide details {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.rating-guide summary {
+  color: #2563eb;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.rating-guide-levels {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.rating-guide-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.rating-guide-item strong {
+  min-width: 40px;
+  color: #334155;
+}
+
+.rating-guide-item span {
+  color: #64748b;
+}
+
+/* ==========================================
+   CAREPULSE AI — ADVANCED HOLOGRAPHIC EFFECT
+   ========================================== */
+
+.health-data-page {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 80% 35%, rgba(0, 180, 255, .16), transparent 38%),
+    radial-gradient(ellipse at 15% 85%, rgba(20, 184, 166, .12), transparent 38%),
+    linear-gradient(135deg, #061321, #08263c 55%, #07182c);
+}
+
+/* Hologram position */
+.health-data-page .medical-hologram {
+  position: absolute;
+  z-index: 0;
+  top: 95px;
+  right: 3%;
+  width: min(440px, 42vw);
+  aspect-ratio: 1 / 1.15;
+  pointer-events: none;
+  perspective: 900px;
+}
+
+/* Digital grid */
+.holo-grid {
+  position: absolute;
+  inset: 8%;
+  background-image:
+    linear-gradient(rgba(56, 189, 248, 0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.10) 1px, transparent 1px);
+  background-size: 22px 22px;
+  -webkit-mask-image: radial-gradient(
+    ellipse,
+    #000 15%,
+    transparent 72%
+  );
+  mask-image: radial-gradient(
+    ellipse,
+    #000 15%,
+    transparent 72%
+  );
+  animation: gridDrift 18s linear infinite;
+}
+
+@keyframes gridDrift {
+  to { background-position: 44px 44px; }
+}
+
+/* Ambient aura */
+.holo-aura {
+  position: absolute;
+  inset: 18%;
+  border-radius: 50%;
+  background: #06b6d4;
+  filter: blur(85px);
+  opacity: .18;
+  animation: auraPulse 4s ease-in-out infinite;
+}
+
+@keyframes auraPulse {
+  0%, 100% { transform: scale(.8); opacity: .12; }
+  50% { transform: scale(1.2); opacity: .32; }
+}
+
+/* Rotating 3D rings */
+.holo-ring {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  border: 1px solid rgba(103, 232, 249, .55);
+  border-radius: 50%;
+  box-shadow: 0 0 18px rgba(34, 211, 238, .16);
+  transform-style: preserve-3d;
+}
+
+.holo-ring-one {
+  width: 76%;
+  height: 76%;
+  transform: translate(-50%, -50%) rotateX(68deg);
+  animation: ringRotateOne 12s linear infinite;
+}
+
+.holo-ring-two {
+  width: 94%;
+  height: 45%;
+  border-style: dashed;
+  transform: translate(-50%, -50%) rotate(-30deg);
+  animation: ringRotateTwo 18s linear infinite;
+}
+
+.holo-ring-three {
+  width: 58%;
+  height: 90%;
+  border-color: rgba(129, 140, 248, .5);
+  transform: translate(-50%, -50%) rotate(35deg);
+  animation: ringRotateThree 22s linear infinite;
+}
+
+@keyframes ringRotateOne {
+  from { rotate: 0deg; }
+  to { rotate: 360deg; }
+}
+
+@keyframes ringRotateTwo {
+  from { rotate: 360deg; }
+  to { rotate: 0deg; }
+}
+
+@keyframes ringRotateThree {
+  from { rotate: 0deg; }
+  to { rotate: -360deg; }
+}
+
+/* Floating holographic heart */
+.holo-heart {
+  position: absolute;
+  inset: 18% 19% 20%;
+  display: grid;
+  place-items: center;
+  animation: heartLevitate 4s ease-in-out infinite;
+}
+
+.holo-heart-svg {
+  width: 100%;
+  max-height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 0 16px rgba(34, 211, 238, .5));
+  animation: heartGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes heartLevitate {
+  0%, 100% { transform: translateY(0) rotateY(-5deg); }
+  50% { transform: translateY(-13px) rotateY(5deg); }
+}
+
+@keyframes heartGlow {
+  0%, 100% { opacity: .8; }
+  50% { opacity: 1; }
+}
+
+/* Moving scan beam */
+.holo-scan-line {
+  position: absolute;
+  top: 16%;
+  left: 18%;
+  width: 64%;
+  height: 2px;
+  background: #a5f3fc;
+  box-shadow: 0 0 12px 3px rgba(34, 211, 238, .55);
+  animation: scanDown 4s ease-in-out infinite alternate;
+}
+
+@keyframes scanDown {
+  from { transform: translateY(0); opacity: .25; }
+  to { transform: translateY(220px); opacity: .9; }
+}
+
+/* Floating particles */
+.holo-particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #a5f3fc;
+  box-shadow: 0 0 12px 3px #22d3ee;
+  animation: particleTravel 5s ease-in-out infinite alternate;
+}
+
+.hp-one { top: 15%; left: 24%; }
+.hp-two { top: 30%; right: 16%; animation-delay: -1s; }
+.hp-three { top: 65%; left: 15%; animation-delay: -2s; }
+.hp-four { bottom: 20%; right: 25%; animation-delay: -3s; }
+.hp-five { top: 52%; right: 10%; animation-delay: -1.5s; }
+.hp-six { top: 78%; left: 40%; animation-delay: -2.5s; }
+
+@keyframes particleTravel {
+  from { transform: translate3d(0, 12px, 0) scale(.6); opacity: .25; }
+  to { transform: translate3d(10px, -28px, 0) scale(1.5); opacity: 1; }
+}
+
+/* Hologram information labels */
+.holo-data {
+  position: absolute;
+  z-index: 2;
+  padding: 9px 12px;
+  border: 1px solid rgba(103, 232, 249, .32);
+  border-radius: 9px;
+  background: rgba(3, 25, 45, .85);
+  color: #a5f3fc;
+  font: 10px/1.5 system-ui, sans-serif;
+  letter-spacing: 1.2px;
+  box-shadow: 0 0 20px rgba(34, 211, 238, .08);
+  animation: labelFloat 5s ease-in-out infinite;
+}
+
+.holo-data-one {
+  top: 12%;
+  left: 0;
+}
+
+.holo-data-one strong {
+  display: block;
+  color: #5eead4;
+  margin-left: 13px;
+  font-size: 12px;
+}
+
+.holo-data-two {
+  right: 0;
+  bottom: 18%;
+  animation-delay: -2s;
+}
+
+.holo-data-two span {
+  color: #22d3ee;
+  margin-right: 7px;
+}
+
+.holo-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background: #5eead4;
+  box-shadow: 0 0 9px #5eead4;
+  animation: dotBlink 1.4s infinite;
+}
+
+@keyframes dotBlink {
+  50% { opacity: .25; }
+}
+
+@keyframes labelFloat {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -6px; }
+}
+
+/* Glowing base platform */
+.holo-platform {
+  position: absolute;
+  left: 20%;
+  right: 20%;
+  bottom: 8%;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid rgba(34, 211, 238, .6);
+  background: radial-gradient(ellipse, rgba(34, 211, 238, .3), transparent 72%);
+  box-shadow: 0 0 25px rgba(34, 211, 238, .2);
+  transform: rotateX(65deg);
+}
+
+.holo-platform div {
+  position: absolute;
+  inset: 30%;
+  border-radius: 50%;
+  background: #67e8f9;
+  filter: blur(8px);
+}
+
+/* Keep form above the decorative layer */
+.health-data-page > :not(.medical-hologram) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Mobile layout */
+@media (max-width: 760px) {
+  .health-data-page .medical-hologram {
+    top: 65px;
+    right: -100px;
+    width: 290px;
+    opacity: .22;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .holo-grid,
+  .holo-aura,
+  .holo-ring,
+  .holo-heart,
+  .holo-heart-svg,
+  .holo-scan-line,
+  .holo-particle,
+  .holo-data,
+  .holo-dot {
+    animation: none !important;
+  }
+}
+
+/* =========================================
+   CAREPULSE AI — CENTERED FORM, FULL-PAGE FX
+   ========================================= */
+
+.health-data-page {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  overflow: clip;
+  background:
+    radial-gradient(ellipse at 8% 25%, #06b6d426, transparent 35%),
+    radial-gradient(ellipse at 92% 65%, #6366f126, transparent 35%),
+    linear-gradient(135deg, #041321, #08263c 55%, #061426);
+}
+
+/* Full-page animation layer: from top to bottom */
+.health-data-page > .medical-ambient {
+  position: absolute !important;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0 !important;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Animated grid fills the entire page */
+.medical-full-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(#38bdf812 1px, transparent 1px),
+    linear-gradient(90deg, #38bdf812 1px, transparent 1px);
+  background-size: 38px 38px;
+  -webkit-mask-image: linear-gradient(
+    90deg, black, transparent 43%, transparent 57%, black
+  );
+  mask-image: linear-gradient(
+    90deg, black, transparent 43%, transparent 57%, black
+  );
+  animation: fullGridMove 22s linear infinite;
+}
+
+@keyframes fullGridMove {
+  to { background-position: 76px 76px; }
+}
+
+/* Moving light waves on both sides */
+.medical-wave {
+  position: absolute;
+  left: -15%;
+  width: 130%;
+  height: 220px;
+  border-top: 2px solid #22d3ee70;
+  border-radius: 50%;
+  box-shadow: 0 -8px 30px #06b6d425;
+}
+
+.wave-one {
+  top: 12%;
+  animation: sideWave 13s ease-in-out infinite alternate;
+}
+
+.wave-two {
+  top: 43%;
+  border-color: #818cf870;
+  animation: sideWave 17s ease-in-out infinite alternate-reverse;
+}
+
+.wave-three {
+  top: 74%;
+  border-color: #2dd4bf70;
+  animation: sideWave 20s ease-in-out infinite alternate;
+}
+
+@keyframes sideWave {
+  from { transform: translate(-2%, 0) rotate(-4deg); }
+  to { transform: translate(2%, 35px) rotate(4deg); }
+}
+
+/* Full-page ambient glow */
+.medical-pulse {
+  position: absolute;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  filter: blur(75px);
+  opacity: .35;
+  animation: ambientPulse 8s ease-in-out infinite alternate;
+}
+
+.pulse-one {
+  top: 5%;
+  left: -100px;
+  background: #06b6d4;
+}
+
+.pulse-two {
+  top: 45%;
+  right: -100px;
+  background: #2563eb;
+  animation-delay: -3s;
+}
+
+.pulse-three {
+  top: 80%;
+  left: 10%;
+  background: #14b8a6;
+  animation-delay: -5s;
+}
+
+@keyframes ambientPulse {
+  from { transform: scale(.75); opacity: .15; }
+  to { transform: scale(1.2); opacity: .4; }
+}
+
+/* Center the data-entry content */
+.health-data-page > :not(.medical-ambient) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Keep the hologram toward the right-hand side */
+.health-data-page .medical-hologram {
+  position: absolute;
+  top: 100px;
+  right: 2%;
+  width: min(260px, 20vw);
+  z-index: 0;
+  opacity: .65;
+  pointer-events: none;
+}
+
+/* Center the main form; preserve its existing styling */
+.health-data-page .health-data-content {
+  position: relative;
+  z-index: 2;
+  width: min(100% - 32px, 760px);
+  margin-inline: auto;
+}
+
+/* Responsive layout */
+@media (max-width: 760px) {
+  .health-data-page .medical-hologram {
+    right: -100px;
+    width: 240px;
+    opacity: .2;
+  }
+
+  .medical-pulse {
+    opacity: .2;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .medical-full-grid,
+  .medical-wave,
+  .medical-pulse,
+  .holo-grid,
+  .holo-aura,
+  .holo-ring,
+  .holo-heart,
+  .holo-heart-svg,
+  .holo-scan-line,
+  .holo-particle,
+  .holo-data,
+  .holo-dot {
+    animation: none !important;
+  }
+}
