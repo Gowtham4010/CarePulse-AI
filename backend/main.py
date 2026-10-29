@@ -41,6 +41,7 @@ app.include_router(ml_router)
 # CORS
 # =========================================
 
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -48,11 +49,13 @@ app.add_middleware(
         "http://localhost:5174",
         "http://localhost:5175",
         "https://carepulse-ai-rho.vercel.app",
+        "https://carepulse-m2huy0dr9-gowtham4010s-projects.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 
 
