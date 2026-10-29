@@ -2,6 +2,7 @@ from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from passlib.context import CryptContext
+from sqlalchemy import func
 
 from database.database import SessionLocal, engine, Base
 from database.models import User, HealthRecord, MLPredictionHistory
@@ -113,6 +114,7 @@ def root():
     }
 
 
+#
 # =========================================
 # REGISTER
 # =========================================
@@ -132,14 +134,30 @@ def register(
             detail="Name, email and password are required"
         )
 
+    # Normalize email before saving
+    email = email.strip().lower()
+    name = name.strip()
+
+    if not name or not email:
+        raise HTTPException(
+            status_code=400,
+            detail="Name and email cannot be empty"
+        )
+
+    if len(password) < 8:
+        raise HTTPException(
+            status_code=400,
+            detail="Password must contain at least 8 characters"
+        )
+
     existing_user = db.query(User).filter(
-        User.email == email
+        func.lower(func.trim(User.email)) == email
     ).first()
 
     if existing_user:
         raise HTTPException(
             status_code=400,
-            detail="Email already registered"
+            detail="Email already registered. Please log in."
         )
 
     hashed_password = pwd_context.hash(password)
@@ -150,9 +168,16 @@ def register(
         password=hashed_password
     )
 
-    db.add(user)
-    db.commit()
-    db.refresh(user)
+    try:
+        db.add(user)
+        db.commit()
+        db.refresh(user)
+    except Exception:
+        db.rollback()
+        raise HTTPException(
+            status_code=500,
+            detail="Registration failed. Please try again."
+        )
 
     return {
         "message": "Registration successful",
@@ -161,15 +186,16 @@ def register(
         "email": user.email
     }
 
+
 # =========================================
 # LOGIN
 # =========================================
+
 @app.post("/auth/login")
 def login(
     data: dict,
     db: Session = Depends(get_db)
 ):
-
     email = data.get("email")
     password = data.get("password")
 
@@ -179,17 +205,14 @@ def login(
             detail="Email and password are required"
         )
 
+    # Normalize email the same way as registration
+    email = email.strip().lower()
+
     user = db.query(User).filter(
-        User.email == email
+        func.lower(func.trim(User.email)) == email
     ).first()
 
-    if not user:
-        raise HTTPException(
-            status_code=401,
-            detail="Invalid email or password"
-        )
-
-    if not pwd_context.verify(
+    if not user or not pwd_context.verify(
         password,
         user.password
     ):
@@ -203,7 +226,6 @@ def login(
         "name": user.name,
         "email": user.email
     }
-
 
 # =========================================
 # CREATE HEALTH RECORD
