@@ -164,8 +164,7 @@ def register(
 # =========================================
 # LOGIN
 # =========================================
-
-
+@app.post("/auth/login")
 def login(
     data: dict,
     db: Session = Depends(get_db)
