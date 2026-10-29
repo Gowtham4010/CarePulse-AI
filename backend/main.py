@@ -117,12 +117,13 @@ def root():
 # REGISTER
 # =========================================
 
+
+d
 @app.post("/auth/register")
 def register(
     data: dict,
     db: Session = Depends(get_db)
 ):
-
     name = data.get("name")
     email = data.get("email")
     password = data.get("password")
@@ -162,12 +163,11 @@ def register(
         "email": user.email
     }
 
-
 # =========================================
 # LOGIN
 # =========================================
 
-@app.post("/auth/login")
+
 def login(
     data: dict,
     db: Session = Depends(get_db)
@@ -210,7 +210,7 @@ def login(
 
 # =========================================
 # CREATE HEALTH RECORD
-# =========================================
+# =========@app.post("/auth/login")================================
 
 @app.post("/health-records")
 def create_health_record(
