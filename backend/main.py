@@ -117,8 +117,6 @@ def root():
 # REGISTER
 # =========================================
 
-
-d
 @app.post("/auth/register")
 def register(
     data: dict,
